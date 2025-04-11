@@ -1,0 +1,5 @@
+{
+  "extends": "@ela-labs/typescript-config/react-libray.json",
+  "include": ["**/*.ts", "**/*.tsx"],
+  "exclude": ["node_modules"]
+}

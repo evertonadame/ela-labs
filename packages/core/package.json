@@ -1,0 +1,28 @@
+{
+  "name": "@ela-labs/core",
+  "version": "0.1.0",
+  "private": true,
+  "exports": {
+    "import": "./dist/index.mjs",
+    "require": "./dist/index.js"
+  },
+  "scripts": {
+    "dev": "tsup --watch",
+    "build": "tsup",
+    "lint": "eslint . --max-warnings 0"
+  },
+  "devDependencies": {
+    "@ela-labs/eslint-config": "workspace:*",
+    "@ela-labs/typescript-config": "workspace:*",
+    "@turbo/gen": "^2.5.0",
+    "@types/node": "^22.14.0",
+    "@types/react": "^18.0.0",
+    "eslint": "^9.24.0",
+    "typescript": "5.8.2"
+  },
+  "dependencies": {
+    "child_process": "^1.0.2",
+    "react": "^19.1.0",
+    "tsup": "^8.4.0"
+  }
+}

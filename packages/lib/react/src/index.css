@@ -1,0 +1,27 @@
+.skeleton-shimmer {
+  position: relative !important;
+  background-color: #d1d5db !important; /* gray-300 */
+  overflow: hidden !important;
+  border-radius: 6px !important;
+}
+
+.skeleton-shimmer::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -50%;
+  width: 50%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.1);
+  transform: skewX(-20deg);
+  animation: shimmer-move 1.6s infinite ease-in-out;
+}
+
+@keyframes shimmer-move {
+  0% {
+    left: -50%;
+  }
+  100% {
+    left: 100%;
+  }
+}
