@@ -1,0 +1,51 @@
+---
+import Layout from '@/layouts/layout.astro';
+import { ExampleCard } from '@/components/react/composeds/card';
+import { ExempleBasics } from '@/components/react/composeds/basics';
+import { ExempleTable } from '@/components/react/composeds/table';
+import { InstallInstructions } from '@/components/install-instructions';
+import { Hero } from '@/components/hero';
+---
+
+<Layout>
+    <Hero 
+        version='1.0.0'
+        title="Smart Skeleton"
+        infos={[
+            "The SmartSkeleton component is a powerful and automatic way to display loading states. Instead of manually creating skeletons for each component, SmartSkeleton intelligently mirrors the visual layout of its children and replaces them with shimmer placeholders.",
+            "This component is designed to be used with any component, and it will automatically detect the layout and replace it with a skeleton. This means that you can use it with any component, and it will work out of the box.",
+            "Is a great way to improve the user experience of your application by providing a smooth loading experience. It is also a great way to reduce the amount of code you need to write, as it automatically generates the skeletons for you.",
+            "Avoid layout jumps (CLS) and provide visual feedback with smart placeholders.",
+        ]}]
+    />
+    <InstallInstructions componentName='smart-skeleton-react' client:load />
+    <div class="mt-8">
+        <h3 class="text-xl font-bold mb-4">Examples: Basic usage</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 rounded overflow-hidden">
+            <div>
+                <p class="mb-4 text-muted-foreground">
+                    This exemples show how to use the SmartSkeleton component with a card component. The card is a simple component that shows a title, a description, and an image. The SmartSkeleton component is used to show a loading state while the content is being loaded.
+                 </p>
+                <ExampleCard client:load />
+            </div>
+            <div>
+                <p class="mb-4 text-muted-foreground">
+                    This exemples show how to use the SmartSkeleton component with a card component. The card is a simple component that shows a title, a description, and an image. The SmartSkeleton component is used to show a loading state while the content is being loaded.
+                 </p>
+                <ExempleBasics client:load />
+            </div>
+        </div>
+    </div>
+    <div class="mt-8">
+        <h3 class="text-xl font-bold mb-4">Examples: Complex usage</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 rounded overflow-hidden">
+            <div>
+                <p class="mb-4 text-muted-foreground">
+                   This is a complex table example that shows how to use the SmartSkeleton component with a table component,
+                   notice that the usage is the same as the basic example, but the the table component is more complex and has more nodes. Meaning that the SmartSkeleton component will automatically detect the layout and replace it with a skeleton.
+                </p>
+                <ExempleTable client:load />
+            </div>
+        </div>
+    </div>
+</Layout>

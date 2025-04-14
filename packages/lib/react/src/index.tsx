@@ -4,12 +4,12 @@ import { styleToObject } from "@ela-labs/core";
 type SmartSkeletonProps = {
   loading: boolean;
   children: React.ReactElement;
-  isContainer?: boolean;
+  block?: boolean;
 };
 
 function cloneSkeletonChildren(
   node: HTMLElement,
-  isContainer?: boolean
+  block?: boolean
 ): JSX.Element[] {
   const children = Array.from(node.children)
     .filter((child) => child instanceof HTMLElement)
@@ -20,7 +20,7 @@ function cloneSkeletonChildren(
 
       const nested = cloneSkeletonChildren(child as HTMLElement);
 
-      const hasVisualContent = isContainer
+      const hasVisualContent = block
         ? true
         : child.children.length === 0 || child.tagName === "IMG";
 
@@ -47,7 +47,7 @@ function cloneSkeletonChildren(
 export function SmartSkeleton({
   loading,
   children,
-  isContainer,
+  block,
 }: SmartSkeletonProps) {
   const ref = useRef<HTMLDivElement>(null);
   const [skeletons, setSkeletons] = useState<JSX.Element[] | null>(null);
@@ -56,9 +56,9 @@ export function SmartSkeleton({
     if (!loading || !ref.current) return;
 
     const container = ref.current;
-    const skeletonTree = cloneSkeletonChildren(container, isContainer);
+    const skeletonTree = cloneSkeletonChildren(container, block);
     setSkeletons(skeletonTree);
-  }, [loading]);
+  }, [block, loading]);
 
   if (typeof window === "undefined") return children;
 
