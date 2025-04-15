@@ -7,6 +7,11 @@
     "build": "tsup",
     "lint": "eslint . --max-warnings 0"
   },
+  "files": [
+    "dist",
+    "index.css",
+    "README.md"
+  ],
   "author": "Everton Adame",
   "repository": {
     "type": "git",

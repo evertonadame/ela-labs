@@ -2,6 +2,10 @@
   "name": "@ela-labs/core",
   "version": "0.2.1",
   "private": false,
+  "files": [
+    "dist",
+    "README.md"
+  ],
   "exports": {
     "./utils": {
       "import": "./dist/utils/index.mjs",
