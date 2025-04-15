@@ -1,5 +1,14 @@
 # @ela-labs/smart-skeleton-react-example
 
+## 0.0.4
+
+### Patch Changes
+
+- 4b8cfac: pipe
+- Updated dependencies [4b8cfac]
+  - @ela-labs/core@0.2.1
+  - @ela-labs/smart-skeleton-react@0.2.1
+
 ## 0.0.3
 
 ### Patch Changes
