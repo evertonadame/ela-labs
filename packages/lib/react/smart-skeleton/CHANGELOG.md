@@ -1,5 +1,13 @@
 # @ela-labs/smart-skeleton-react
 
+## 0.2.2
+
+### Patch Changes
+
+- 182190c: patch
+- Updated dependencies [182190c]
+  - @ela-labs/core@0.2.2
+
 ## 0.2.1
 
 ### Patch Changes
