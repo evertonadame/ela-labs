@@ -1,24 +1,75 @@
-import React, { useLayoutEffect, useRef, useState, type JSX } from "react";
+import React, {
+  useCallback,
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  useState,
+  type JSX,
+} from "react";
 import { styleToObject } from "@ela-labs/core";
+import { listeners } from "@ela-labs/core";
+
+type Events = "resize" | "mutation" | "mutationResize" | "scroll";
+
+const MAX_DEPTH = 10;
 
 type SmartSkeletonProps = {
   loading: boolean;
-  children: React.ReactElement;
+  keepMountOnLoading?: boolean;
+  maxDepth?: number;
+  children: React.ReactElement | React.ReactElement[];
+  /*
+   * @default false
+   */
   block?: boolean;
+  mode?:
+    | "performance"
+    | {
+        [K in Events]?: boolean;
+      };
 };
+
+let styleCache = new WeakMap<HTMLElement, React.CSSProperties>();
+
+function clearStyleCache() {
+  styleCache = new WeakMap();
+}
 
 function cloneSkeletonChildren(
   node: HTMLElement,
-  block?: boolean
-): JSX.Element[] {
+  block?: boolean,
+  depth = 0,
+  maxDepth = MAX_DEPTH
+): (JSX.Element | null)[] {
+  if (depth > maxDepth) return [];
+
   const children = Array.from(node.children)
     .filter((child) => child instanceof HTMLElement)
     .map((child, i) => {
-      const rect = child.getBoundingClientRect();
+      const htmlChild = child as HTMLElement;
       const styles = getComputedStyle(child);
-      const styleObj = styleToObject(styles);
+      if (styles.display === "none") return null;
 
-      const nested = cloneSkeletonChildren(child as HTMLElement);
+      let styleObj = styleCache.get(htmlChild);
+
+      if (!styleObj) {
+        const rect = htmlChild.getBoundingClientRect();
+        styleObj = {
+          ...styleToObject(styles),
+          borderRadius: styles.borderRadius || "4px",
+          overflow: "hidden",
+          height: rect.height,
+          width: rect.width,
+        };
+        styleCache.set(htmlChild, styleObj);
+      }
+
+      const nested = cloneSkeletonChildren(
+        child as HTMLElement,
+        block,
+        depth + 1,
+        maxDepth
+      );
 
       const hasVisualContent = block
         ? true
@@ -27,13 +78,8 @@ function cloneSkeletonChildren(
       return (
         <div
           key={i}
-          style={{
-            ...styleObj,
-            width: rect.width,
-            height: rect.height,
-            borderRadius: styleObj.borderRadius || 4,
-            overflow: "hidden",
-          }}
+          aria-hidden="true"
+          style={styleObj}
           className={hasVisualContent ? "skeleton-shimmer" : undefined}
         >
           {nested}
@@ -47,26 +93,87 @@ function cloneSkeletonChildren(
 export function SmartSkeleton({
   loading,
   children,
-  block,
+  mode = "performance",
+  keepMountOnLoading = false,
+  block = false,
+  maxDepth = MAX_DEPTH,
 }: SmartSkeletonProps) {
-  const ref = useRef<HTMLDivElement>(null);
-  const [skeletons, setSkeletons] = useState<JSX.Element[] | null>(null);
+  const contentRef = useRef<HTMLDivElement>(null);
+  const modeRef = useRef(mode);
+  const [skeletons, setSkeletons] = useState<(JSX.Element | null)[] | null>(
+    null
+  );
+
+  useEffect(() => {
+    modeRef.current = mode;
+  }, [mode]);
+
+  const renderSkeleton = useCallback(() => {
+    if (!contentRef.current) return;
+    const skeletonTree = cloneSkeletonChildren(
+      contentRef.current,
+      block,
+      0,
+      maxDepth
+    );
+    setSkeletons(skeletonTree);
+  }, [block, maxDepth]);
 
   useLayoutEffect(() => {
-    if (!loading || !ref.current) return;
+    if (!loading || !contentRef.current) return;
+    renderSkeleton();
+  }, [block, loading, renderSkeleton]);
 
-    const container = ref.current;
-    const skeletonTree = cloneSkeletonChildren(container, block);
-    setSkeletons(skeletonTree);
-  }, [block, loading]);
+  useEffect(() => {
+    if (modeRef.current === "performance") return;
+    if (!contentRef.current) return;
+    const container = contentRef.current;
+
+    const disposers = listeners({
+      container,
+      mode: modeRef.current,
+      handlerOnFrame() {
+        clearStyleCache();
+        renderSkeleton();
+      },
+    });
+
+    return () => {
+      disposers.forEach((dispose) => dispose());
+    };
+  }, [block, modeRef, renderSkeleton]);
 
   if (typeof window === "undefined") return children;
 
   if (!loading) return children;
 
-  return (
-    <div ref={ref} style={{ position: "relative" }}>
-      {loading && skeletons ? skeletons : children}
-    </div>
-  );
+  if (keepMountOnLoading || typeof modeRef.current === "object") {
+    return (
+      <div style={{ position: "relative" }}>
+        <div ref={contentRef}>{children}</div>
+        {loading && skeletons && (
+          <div
+            style={{
+              position: "absolute",
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: 0,
+              pointerEvents: "none",
+            }}
+          >
+            {skeletons}
+          </div>
+        )}
+      </div>
+    );
+  }
+
+  if (modeRef.current === "performance") {
+    return (
+      <div ref={contentRef} style={{ position: "relative" }}>
+        {loading && skeletons ? skeletons : children}
+      </div>
+    );
+  }
 }

@@ -26,7 +26,7 @@ const data: SidebarMenuItemType[] = [
     items: [
       {
         title: "Installation",
-        url: "/installation",
+        url: "/",
       },
     ],
   },
@@ -40,14 +40,6 @@ const data: SidebarMenuItemType[] = [
           {
             title: "Smart Skeleton",
             url: "/react/smart-skeleton",
-          },
-          {
-            title: "Smart Image",
-            url: "/react/smart-image",
-          },
-          {
-            title: "Smart Video",
-            url: "/react/smart-video",
           },
         ],
       },

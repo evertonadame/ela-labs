@@ -1,9 +1,69 @@
 ---
-import Layout from '../layouts/layout.astro';
+import Layout from "../layouts/layout.astro";
 ---
 
 <Layout>
-    <div>
-        Contribution guide
-    </div>
+  <h1 class="text-2xl font-bold mb-4">Contribution Guide</h1>
+  <p class="mb-4 text-muted-foreground">
+    Thank you for wanting to contribute to this project! 🫶 This is an open
+    source project and all help is welcome, from bug fixes to improvements in
+    the documentation.
+  </p>
+  <h2 class="text-xl font-bold mb-4">How to Contribute</h2>
+  <ol class="list-disc list-inside mb-4 text-muted-foreground">
+    <li>Fork this repository.</li>
+    <li>
+      Create a branch with a descriptive name: <code
+        >git checkout -b (fix|feat|core|wip|style)/(ISSUE_'issue-id')-....</code
+      >
+    </li>
+    <li>Make your changes and add tests if necessary.</li>
+    <li>Open a Pull Request explaining what was done and why.</li>
+  </ol>
+  <h2 class="text-xl font-bold mb-4">Code Rules</h2>
+  <ul class="list-disc list-inside mb-4 text-muted-foreground">
+    <li>
+      Use a consistent code style (if you have ESLint/Prettier, follow the
+      project configuration
+    </li>
+    <li>Avoid adding code unrelated to the main change in the PR.</li>
+    <li>
+      If you add or modify functionality, update the documentation if necessary.
+    </li>
+    <li>Testing is always welcome where applicable.</li>
+  </ul>
+  <h2 class="text-xl font-bold mb-4">Communication</h2>
+  <p class="text-muted-foreground mb-4">
+    If you have any questions or suggestions, feel free to open a <a
+      href="
+    https:
+    github.com
+    SEU_USUARIO
+    SEU_REPOSITORIO
+    issues"
+      target="_blank"
+      rel="noopener"
+    >
+      issue
+    </a> on GitHub. We discuss ideas openly before we start working.
+  </p>
+
+  <h2 class="text-xl font-bold mb-4">Useful Links</h2>
+  <ul class="list-disc list-inside mb-4 text-muted-foreground">
+    <li>
+      <a
+        class="underline underline-offset-2"
+        href="https://github.com/evertonadame/ela-labs"
+        target="_blank"
+        rel="noopener">Repository on GitHub</a
+      >
+    </li>
+    <li>
+      <a href="/changelog" class="underline underline-offset-2">Changelog</a>
+    </li>
+  </ul>
+
+  <p class="text-xs text-center">
+    Thank you for being part of the community! 💙
+  </p>
 </Layout>

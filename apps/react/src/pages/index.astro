@@ -1,9 +1,26 @@
 ---
-import Layout from '../layouts/layout.astro';
+import Layout from "../layouts/layout.astro";
 ---
 
 <Layout>
-	<button>
-		<a href="/exemples/react">React Exemple</a>
-	</button>
+  <div>
+    <h2 class="text-2xl font-bold mb-4">Installation</h2>
+    <p class="mb-4 text-muted-foreground">
+      We support those frameworks and libraries for now, but we are working on
+      adding more. If you want to help us, please open an issue or a pull
+      request on our GitHub repository.
+    </p>
+  </div>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+    <a href="/react">
+      <div
+        class="bg-muted p-4 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300"
+      >
+        <h3 class="text-xl font-semibold mb-2">React</h3>
+        <p class="text-muted-foreground">
+          Install the package and start using it in your React app.
+        </p>
+      </div>
+    </a>
+  </div>
 </Layout>
