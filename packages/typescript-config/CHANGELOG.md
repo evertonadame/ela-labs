@@ -1,5 +1,11 @@
 # @ela-labs/typescript-config
 
+## 0.0.3
+
+### Patch Changes
+
+- b7c3273: patch
+
 ## 0.0.2
 
 ### Patch Changes
