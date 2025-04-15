@@ -6,8 +6,8 @@ import React, {
   useState,
   type JSX,
 } from "react";
-import { styleToObject } from "@ela-labs/core";
-import { listeners } from "@ela-labs/core";
+import { styleToObject, listeners } from "@ela-labs/core/utils";
+import { useEasterEgg } from "@ela-labs/core/hooks";
 
 type Events = "resize" | "mutation" | "mutationResize" | "scroll";
 
@@ -96,6 +96,7 @@ export function SmartSkeleton({
   maxDepth = MAX_DEPTH,
 }: SmartSkeletonProps) {
   const contentRef = useRef<HTMLDivElement>(null);
+  useEasterEgg(contentRef.current);
   const modeRef = useRef(mode);
   const [skeletons, setSkeletons] = useState<(JSX.Element | null)[] | null>(
     null

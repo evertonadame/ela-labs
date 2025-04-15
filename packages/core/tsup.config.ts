@@ -4,7 +4,7 @@ const inWatchMode = process.argv.includes("--watch");
 
 export default defineConfig({
   clean: !inWatchMode,
-  entry: ["./src/index.ts"],
+  entry: ["./src"],
   format: ["esm", "cjs"],
   watch: inWatchMode,
   external: ["react", "react-dom", "react/jsx-runtime"],

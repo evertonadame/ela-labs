@@ -3,8 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "exports": {
-    "import": "./dist/index.mjs",
-    "require": "./dist/index.js"
+    "./utils": {
+      "import": "./dist/utils/index.mjs",
+      "require": "./dist/utils/index.js"
+    },
+    "./hooks": {
+      "import": "./dist/hooks/index.mjs",
+      "require": "./dist/hooks/index.js"
+    }
   },
   "scripts": {
     "dev": "tsup --watch",
