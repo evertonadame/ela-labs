@@ -1,7 +1,7 @@
 {
   "name": "@ela-labs/core",
   "version": "0.2.1",
-  "private": true,
+  "private": false,
   "exports": {
     "./utils": {
       "import": "./dist/utils/index.mjs",
@@ -16,6 +16,9 @@
     "dev": "tsup --watch",
     "build": "tsup",
     "lint": "eslint . --max-warnings 0"
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "devDependencies": {
     "@ela-labs/eslint-config": "workspace:*",

@@ -182,12 +182,6 @@ importers:
       '@ela-labs/core':
         specifier: workspace:*
         version: link:../../../core
-      '@ela-labs/eslint-config':
-        specifier: workspace:*
-        version: link:../../../eslint-config
-      '@ela-labs/typescript-config':
-        specifier: workspace:*
-        version: link:../../../typescript-config
       child_process:
         specifier: ^1.0.2
         version: 1.0.2
@@ -201,6 +195,12 @@ importers:
         specifier: ^8.4.0
         version: 8.4.0(jiti@2.4.2)(postcss@8.5.3)(typescript@5.8.2)
     devDependencies:
+      '@ela-labs/eslint-config':
+        specifier: workspace:*
+        version: link:../../../eslint-config
+      '@ela-labs/typescript-config':
+        specifier: workspace:*
+        version: link:../../../typescript-config
       '@types/node':
         specifier: ^22.14.0
         version: 22.14.0
