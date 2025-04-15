@@ -7,6 +7,11 @@
     "build": "tsup",
     "lint": "eslint . --max-warnings 0"
   },
+  "author": "Everton Adame",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/evertonadame/ela-labs"
+  },
   "private": false,
   "exports": {
     ".": {

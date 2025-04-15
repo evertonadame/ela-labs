@@ -9,6 +9,7 @@
     "check-types": "turbo run check-types",
     "changeset:bump": "pnpm changeset"
   },
+  "author": "Everton Adame",
   "devDependencies": {
     "prettier": "^3.5.3",
     "turbo": "^2.5.0",
