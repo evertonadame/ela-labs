@@ -1,5 +1,15 @@
 # @ela-labs/smart-skeleton-react
 
+## 0.2.1
+
+### Patch Changes
+
+- 4b8cfac: pipe
+- Updated dependencies [4b8cfac]
+  - @ela-labs/core@0.2.1
+  - @ela-labs/eslint-config@0.0.1
+  - @ela-labs/typescript-config@0.0.1
+
 ## 0.2.0
 
 ### Minor Changes
