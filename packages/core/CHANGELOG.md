@@ -1,5 +1,11 @@
 # @ela-labs/core
 
+## 0.2.3
+
+### Patch Changes
+
+- b7c3273: patch
+
 ## 0.2.2
 
 ### Patch Changes
