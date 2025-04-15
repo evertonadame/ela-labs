@@ -57,13 +57,7 @@ jobs:
         run: pnpm turbo run build
 
       - name: Run semantic-release in smart-skeleton
-        working-directory: packages/lib/react
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: npx semantic-release
-
-      - name: Run semantic-release in smart-skeleton
-        working-directory: packages/smart-skeleton
+        working-directory: packages/lib/react/smart-skeleton
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: npx semantic-release
