@@ -9,7 +9,7 @@ export default defineConfig({
   watch: inWatchMode,
   dts: true,
   silent: true,
-  external: ["react", "react-dom", "react/jsx-runtime", "@ela-labs/core"],
+  external: ["react", "react-dom", "react/jsx-runtime"],
   bundle: true,
   sourcemap: !inWatchMode,
   splitting: false,

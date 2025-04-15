@@ -19,7 +19,6 @@
     "react": ">=18.0.0"
   },
   "devDependencies": {
-    "@ela-labs/core": "workspace:*",
     "@types/node": "^22.14.0",
     "@types/react": "^18.0.0",
     "typescript": "^5.3.3"
@@ -28,10 +27,14 @@
     "access": "public"
   },
   "dependencies": {
-    "child_process": "^1.0.2",
+    "@ela-labs/core": "workspace:*",
     "@ela-labs/eslint-config": "workspace:*",
     "@ela-labs/typescript-config": "workspace:*",
-    "@ela-labs/core": "workspace:*",
+    "@semantic-release/commit-analyzer": "^13.0.1",
+    "@semantic-release/github": "^11.0.1",
+    "@semantic-release/npm": "^12.0.1",
+    "@semantic-release/release-notes-generator": "^14.0.3",
+    "child_process": "^1.0.2",
     "eslint": "^9.24.0",
     "tsup": "^8.4.0"
   }
