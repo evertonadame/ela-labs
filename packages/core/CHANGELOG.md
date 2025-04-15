@@ -1,5 +1,11 @@
 # @ela-labs/core
 
+## 0.2.4
+
+### Patch Changes
+
+- f57a821: patch
+
 ## 0.2.3
 
 ### Patch Changes
