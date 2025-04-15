@@ -21,8 +21,10 @@ jobs:
           node-version: 22.14.0
           cache: "pnpm"
 
-      - name: Install pnpm
-        run: npm install -g pnpm@10.6.5
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 10.6.5
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
@@ -48,8 +50,10 @@ jobs:
           node-version: 22.14.0
           cache: "pnpm"
 
-      - name: Install pnpm
-        run: npm install -g pnpm@10.6.5
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 10.6.5
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
