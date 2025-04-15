@@ -1,4 +1,4 @@
-<h1 align="center">✨ ELA LABS ✨</h1>
+<h1 align="center">✨ ELA LABS - SMART SKELETON✨</h1>
 
 <p align="center">
   A collection of smart, reusable components focused on real-world performance and UX.
