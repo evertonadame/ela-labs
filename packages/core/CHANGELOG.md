@@ -1,5 +1,11 @@
 # @ela-labs/core
 
+## 0.2.2
+
+### Patch Changes
+
+- 182190c: patch
+
 ## 0.2.1
 
 ### Patch Changes
