@@ -17,6 +17,7 @@ type SmartSkeletonProps = {
   loading: boolean;
   keepMountOnLoading?: boolean;
   maxDepth?: number;
+  debug?: boolean;
   children: React.ReactElement | React.ReactElement[];
   block?: boolean;
   mode?:
@@ -93,6 +94,7 @@ export function SmartSkeleton({
   mode = "performance",
   keepMountOnLoading = false,
   block = false,
+  debug,
   maxDepth = MAX_DEPTH,
 }: SmartSkeletonProps) {
   const contentRef = useRef<HTMLDivElement>(null);
@@ -140,6 +142,15 @@ export function SmartSkeleton({
       disposers.forEach((dispose) => dispose());
     };
   }, [block, modeRef, renderSkeleton]);
+
+  if (debug) {
+    console.log("props", {
+      children,
+      server: typeof window === "undefined",
+      loading,
+      modeRef,
+    });
+  }
 
   if (typeof window === "undefined") return children;
 
