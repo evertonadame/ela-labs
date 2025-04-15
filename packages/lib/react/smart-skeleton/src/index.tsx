@@ -18,9 +18,6 @@ type SmartSkeletonProps = {
   keepMountOnLoading?: boolean;
   maxDepth?: number;
   children: React.ReactElement | React.ReactElement[];
-  /*
-   * @default false
-   */
   block?: boolean;
   mode?:
     | "performance"

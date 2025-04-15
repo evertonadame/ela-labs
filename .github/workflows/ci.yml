@@ -34,8 +34,11 @@ jobs:
   release:
     name: Release
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/main'
     needs: build
+    if: github.ref == 'refs/heads/main'
+    permissions:
+      contents: write
+      pull-requests: write
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -56,8 +59,10 @@ jobs:
       - name: Build all packages
         run: pnpm turbo run build
 
-      - name: Run semantic-release in smart-skeleton
-        working-directory: packages/lib/react/smart-skeleton
+      - name: Create Release Pull Request or Publish to npm
+        uses: changesets/action@v1
+        with:
+          publish: pnpm changeset publish
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: npx semantic-release
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
