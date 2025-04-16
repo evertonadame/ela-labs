@@ -44,7 +44,7 @@ It’s designed to balance **performance**, **reusability**, and **compatibility
 
 ## 📚 Documentation
 
-📘 Check out the full docs at: [https://ela-labs-react.vercel.app](https://smart-skeleton.dev)
+📘 Check out the full docs at: [https://ela-labs-react.vercel.app](https://ela-labs-react.vercel.app)
 
 ---
 
@@ -54,7 +54,7 @@ Each component in the ELA LABS collection is published independently, allowing y
 
 To install a specific component, refer to its individual installation guide in the documentation.
 
-📘 Full docs available at: [https://ela-labs-react.vercel.app](https://smart-skeleton.dev)
+📘 Full docs available at: [https://ela-labs-react.vercel.app](https://ela-labs-react.vercel.app)
 
 For example, to install **SmartSkeleton**:
 
