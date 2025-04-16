@@ -1,5 +1,11 @@
 # @ela-labs/core
 
+## 0.2.5
+
+### Patch Changes
+
+- d92a09d: patch
+
 ## 0.2.4
 
 ### Patch Changes
