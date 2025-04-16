@@ -1,5 +1,11 @@
 # @ela-labs/smart-skeleton-react
 
+## 0.2.5
+
+### Patch Changes
+
+- 1f267b6: patch
+
 ## 0.2.4
 
 ### Patch Changes
