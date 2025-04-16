@@ -1,5 +1,11 @@
 # @ela-labs/typescript-config
 
+## 0.0.6
+
+### Patch Changes
+
+- 4b04e17: patch
+
 ## 0.0.5
 
 ### Patch Changes
