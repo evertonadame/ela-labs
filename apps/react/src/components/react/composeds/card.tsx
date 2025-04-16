@@ -90,12 +90,7 @@ export function ExampleCard({ loading }: { loading: boolean }) {
 }
 `}
     >
-      <SmartSkeleton
-        loading={loading || false}
-        mode={{
-          mutationResize: true,
-        }}
-      >
+      <SmartSkeleton loading={loading || false}>
         <Card className="w-full">
           <CardHeader>
             <CardTitle>Create project</CardTitle>

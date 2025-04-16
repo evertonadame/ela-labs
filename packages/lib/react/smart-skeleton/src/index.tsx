@@ -103,6 +103,7 @@ export function SmartSkeleton({
   const [skeletons, setSkeletons] = useState<(JSX.Element | null)[] | null>(
     null
   );
+  const prevLoadingRef = useRef(false);
 
   useEffect(() => {
     modeRef.current = mode;
@@ -121,8 +122,13 @@ export function SmartSkeleton({
 
   useLayoutEffect(() => {
     if (!loading || !contentRef.current) return;
-    renderSkeleton();
-  }, [block, loading, renderSkeleton]);
+
+    if (!prevLoadingRef.current || !skeletons) {
+      renderSkeleton();
+    }
+
+    prevLoadingRef.current = loading;
+  }, [block, loading, renderSkeleton, skeletons]);
 
   useEffect(() => {
     if (modeRef.current === "performance") return;
