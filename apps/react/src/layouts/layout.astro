@@ -1,46 +1,68 @@
 ---
-import Sidebar from '@/components/sidebar'
-import { composeBreadcrumbs } from '../utils/compose-breadcrumbs';
-import { composeTitle } from '../utils/compose-title';
-import '@ela-labs/smart-skeleton-react/index.css'
-import '../styles/global.css'
+import Sidebar from "@/components/sidebar";
+import { composeBreadcrumbs } from "../utils/compose-breadcrumbs";
+import { composeTitle } from "../utils/compose-title";
+import "@ela-labs/smart-skeleton-react/index.css";
+import "../styles/global.css";
 
-const breadcrumbs = composeBreadcrumbs(Astro)
-const title = composeTitle(Astro)
+const breadcrumbs = composeBreadcrumbs(Astro);
+const title = composeTitle(Astro);
 const serverPath = Astro.url.pathname;
 ---
 
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<script is:inline>
-			const getThemePreference = () => {
-				if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
-					return localStorage.getItem('theme');
-				}
-				return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-			};
-			const isDark = getThemePreference() === 'dark';
-			document.documentElement.classList[isDark ? 'add' : 'remove']('dark');
-		 
-			if (typeof localStorage !== 'undefined') {
-				const observer = new MutationObserver(() => {
-					const isDark = document.documentElement.classList.contains('dark');
-					localStorage.setItem('theme', isDark ? 'dark' : 'light');
-				});
-				observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <!-- Google tag (gtag.js) -->
+    <script
+      is:inline
+      src="https://www.googletagmanager.com/gtag/js?id=G-L97Z8SL8L1"></script>
+    <script
+      is:inline
+      set:html={`window.dataLayer = window.dataLayer || []
+			function gtag() {
+			  dataLayer.push(arguments)
 			}
-		</script>
-		<title>{title}</title>
-	</head>
-	<body>
-		<Sidebar client:load breadcrumbs={breadcrumbs} serverPath={serverPath}>
-			<div class="py-4 px-8">
-				<slot />
-			</div>
-		</Sidebar>
-	</body>
+			gtag('js', new Date())
+	  
+			gtag('config', 'G-L97Z8SL8L1')`}
+    />
+    <script is:inline>
+      const getThemePreference = () => {
+        if (
+          typeof localStorage !== "undefined" &&
+          localStorage.getItem("theme")
+        ) {
+          return localStorage.getItem("theme");
+        }
+        return window.matchMedia("(prefers-color-scheme: dark)").matches
+          ? "dark"
+          : "light";
+      };
+      const isDark = getThemePreference() === "dark";
+      document.documentElement.classList[isDark ? "add" : "remove"]("dark");
+
+      if (typeof localStorage !== "undefined") {
+        const observer = new MutationObserver(() => {
+          const isDark = document.documentElement.classList.contains("dark");
+          localStorage.setItem("theme", isDark ? "dark" : "light");
+        });
+        observer.observe(document.documentElement, {
+          attributes: true,
+          attributeFilter: ["class"],
+        });
+      }
+    </script>
+    <title>{title}</title>
+  </head>
+  <body>
+    <Sidebar client:load breadcrumbs={breadcrumbs} serverPath={serverPath}>
+      <div class="py-4 px-8">
+        <slot />
+      </div>
+    </Sidebar>
+  </body>
 </html>

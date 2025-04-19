@@ -1,5 +1,5 @@
 {
-  "name": "@ela-labs/smart-skeleton-react-example",
+  "name": "@ela-labs/smart-react-example",
   "type": "module",
   "version": "0.0.8",
   "private": true,
@@ -13,6 +13,7 @@
     "@astrojs/react": "^4.2.3",
     "@ela-labs/core": "workspace:*",
     "@ela-labs/smart-skeleton-react": "workspace:*",
+    "@ela-labs/smart-text-react": "workspace:*",
     "@radix-ui/react-checkbox": "^1.1.5",
     "@radix-ui/react-collapsible": "^1.1.4",
     "@radix-ui/react-dialog": "^1.1.7",

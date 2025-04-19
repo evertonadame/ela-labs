@@ -15,6 +15,7 @@ import { ExempleTable } from "@/components/react/composeds/table";
 import { InstallInstructions } from "@/components/install-instructions";
 import { Hero } from "@/components/hero";
 import { Badge } from "@/components/ui/badge";
+import { Separator } from "@/components/ui/separator";
 
 const api = [
   {
@@ -68,73 +69,146 @@ const api = [
     ]
   />
   <InstallInstructions componentName="smart-skeleton-react" client:load />
-  <div class="mt-8">
-    <h3 class="text-xl font-bold mb-4">Examples: Basic usage</h3>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 rounded overflow-hidden">
-      <div>
-        <p class="mb-4 text-muted-foreground">
-          This exemples show how to use the SmartSkeleton component with a card
-          component. The card is a simple component that shows a title, a
-          description, and an image. The SmartSkeleton component is used to show
-          a loading state while the content is being loaded.
-        </p>
-        <ExampleCard client:load />
-      </div>
-      <div>
-        <p class="mb-4 text-muted-foreground">
-          This exemples show how to use the SmartSkeleton component with a card
-          component. The card is a simple component that shows a title, a
-          description, and an image. The SmartSkeleton component is used to show
-          a loading state while the content is being loaded.
-        </p>
-        <ExempleBasics client:load />
-      </div>
-    </div>
+  <h4 class="mt-8">🛠 Style Customization</h4>
+  <div
+    class="flex flex-col gap-4 items-start mt-2 bg-muted p-4 rounded-md font-mono text-sm text-muted-foreground"
+  >
+    Important: Import the CSS file in your main file (e.g., index.tsx or
+    App.tsx) to ensure the skeletons are styled correctly.
+    <br />
+    <span> import '@ela-labs/smart-skeleton-react/index.css'; </span>
   </div>
-  <div class="mt-8">
-    <h3 class="text-xl font-bold mb-4">Examples: Complex usage</h3>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 rounded overflow-hidden">
-      <div>
-        <p class="mb-4 text-muted-foreground">
-          This is a complex table example that shows how to use the
-          SmartSkeleton component with a table component, notice that the usage
-          is the same as the basic example, but the the table component is more
-          complex and has more nodes. Meaning that the SmartSkeleton component
-          will automatically detect the layout and replace it with a skeleton.
-        </p>
-        <ExempleTable client:load />
-      </div>
-    </div>
-  </div>
-  <Table className="mt-12">
-    <TableCaption>A list of your components.</TableCaption>
-    <TableHeader>
-      <TableRow>
-        <TableHead>Prop</TableHead>
-        <TableHead>Type</TableHead>
-        <TableHead>Default</TableHead>
-        <TableHead>Description</TableHead>
-      </TableRow>
-    </TableHeader>
-    <TableBody>
-      {
-        api?.map((a, i) => (
-          <TableRow key={i}>
-            <TableCell>
-              <Badge variant="secondary">{a.prop}</Badge>
-            </TableCell>
-            <TableCell>
-              <Badge variant="secondary">{a.type}</Badge>
-            </TableCell>
-            <TableCell>
-              <Badge variant="secondary">{a.default}</Badge>
-            </TableCell>
-            <TableCell className="text-left min-w-lg max-w-lg whitespace-normal">
-              {a.description}
-            </TableCell>
-          </TableRow>
-        ))
+  <Separator className="my-4" />
+  OR
+  <div
+    class="flex flex-col gap-4 items-start mt-2 bg-muted p-4 rounded-md font-mono text-sm text-muted-foreground"
+  >
+    You can also customize the skeleton styles by overriding the CSS variables
+    in your CSS file. Here are the default values:
+    <br />
+    <span
+      >{
+        `.skeleton-shimmer {
+      position: relative !important;
+      background-color: #d1d5db !important; /* gray-300 */
+      overflow: hidden !important;
+      border-radius: 6px !important;
+    }`
       }
-    </TableBody>
-  </Table>
+    </span>
+    <br />
+    <span
+      >{
+        `
+        .skeleton-shimmer::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -50%;
+        width: 50%;
+        height: 100%;
+        background: rgba(255, 255, 255, 0.1);
+        transform: skewX(-20deg);
+        animation: shimmer-move 1.6s infinite ease-in-out;
+      }
+    }`
+      }</span
+    >
+    <br />
+    <span
+      >{
+        `
+    
+@keyframes shimmer-move {
+  0% {
+    left: -50%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+    `
+      }</span
+    >
+    <br />
+  </div>
+
+  <div
+    class="flex flex-col gap-4 mt-8 items-start bg-muted p-4 rounded-md font-mono text-sm text-muted-foreground"
+  >
+    <div class="mt-8">
+      <h3 class="text-xl font-bold mb-4">Examples: Basic usage</h3>
+      <div
+        class="grid grid-cols-1 md:grid-cols-2 gap-12 rounded overflow-hidden"
+      >
+        <div>
+          <p class="mb-4 text-muted-foreground">
+            This exemples show how to use the SmartSkeleton component with a
+            card component. The card is a simple component that shows a title, a
+            description, and an image. The SmartSkeleton component is used to
+            show a loading state while the content is being loaded.
+          </p>
+          <ExampleCard client:load />
+        </div>
+        <div>
+          <p class="mb-4 text-muted-foreground">
+            This exemples show how to use the SmartSkeleton component with a
+            card component. The card is a simple component that shows a title, a
+            description, and an image. The SmartSkeleton component is used to
+            show a loading state while the content is being loaded.
+          </p>
+          <ExempleBasics client:load />
+        </div>
+      </div>
+    </div>
+    <div class="mt-8">
+      <h3 class="text-xl font-bold mb-4">Examples: Complex usage</h3>
+      <div
+        class="grid grid-cols-1 md:grid-cols-2 gap-12 rounded overflow-hidden"
+      >
+        <div>
+          <p class="mb-4 text-muted-foreground">
+            This is a complex table example that shows how to use the
+            SmartSkeleton component with a table component, notice that the
+            usage is the same as the basic example, but the the table component
+            is more complex and has more nodes. Meaning that the SmartSkeleton
+            component will automatically detect the layout and replace it with a
+            skeleton.
+          </p>
+          <ExempleTable client:load />
+        </div>
+      </div>
+    </div>
+    <Table className="mt-12">
+      <TableCaption>A list of your components.</TableCaption>
+      <TableHeader>
+        <TableRow>
+          <TableHead>Prop</TableHead>
+          <TableHead>Type</TableHead>
+          <TableHead>Default</TableHead>
+          <TableHead>Description</TableHead>
+        </TableRow>
+      </TableHeader>
+      <TableBody>
+        {
+          api?.map((a, i) => (
+            <TableRow key={i}>
+              <TableCell>
+                <Badge variant="secondary">{a.prop}</Badge>
+              </TableCell>
+              <TableCell>
+                <Badge variant="secondary">{a.type}</Badge>
+              </TableCell>
+              <TableCell>
+                <Badge variant="secondary">{a.default}</Badge>
+              </TableCell>
+              <TableCell className="text-left min-w-lg max-w-lg whitespace-normal">
+                {a.description}
+              </TableCell>
+            </TableRow>
+          ))
+        }
+      </TableBody>
+    </Table>
+  </div>
 </Layout>

@@ -16,10 +16,24 @@ import { Button } from "../ui/button";
 type TabsProps = {
   children: React.ReactNode;
   childrenCode: string;
+  showActions?: "devices" | "loading";
 };
 
-export function Tabs({ children, childrenCode }: TabsProps) {
+const rendersMap = {
+  desktop: "Desktop",
+  tablet: "Tablet",
+  mobile: "Mobile",
+};
+
+const renderMapWidth = {
+  desktop: "100%",
+  tablet: 640,
+  mobile: 375,
+};
+
+export function Tabs({ children, childrenCode, showActions }: TabsProps) {
   const [loading, setLoading] = useState(true);
+  const [render, setRender] = useState("desktop");
   const [code, setCode] = useState(childrenCode);
 
   useEffect(() => {
@@ -44,16 +58,41 @@ export function Tabs({ children, childrenCode }: TabsProps) {
         <TabsTrigger value="code">Code</TabsTrigger>
       </TabsList>
       <TabsContent value="visual">
-        <Button
-          onClick={() => {
-            setLoading((prev) => !prev);
+        {showActions === "devices" ? (
+          <div className="flex justify-start my-4 gap-4 flex-wrap">
+            {Object.entries(rendersMap).map(([key, value]) => (
+              <Button
+                key={key}
+                variant={render === key ? "default" : "secondary"}
+                onClick={() => {
+                  setRender(key);
+                }}
+              >
+                {value}{" "}
+                {renderMapWidth[key as keyof typeof renderMapWidth] &&
+                  `(${renderMapWidth[key as keyof typeof renderMapWidth]})`}
+              </Button>
+            ))}
+          </div>
+        ) : (
+          <Button
+            onClick={() => {
+              setLoading((prev) => !prev);
+            }}
+            variant={loading ? "default" : "secondary"}
+            className="my-4"
+          >
+            {loading ? "Stop Loading" : "Start Loading"}
+          </Button>
+        )}
+        <div
+          style={{
+            width: "100%",
+            maxWidth:
+              renderMapWidth[render as keyof typeof renderMapWidth] ||
+              undefined,
           }}
-          variant={loading ? "default" : "secondary"}
-          className="my-4"
         >
-          {loading ? "Stop Loading" : "Start Loading"}
-        </Button>
-        <div>
           {cloneElement(children as React.ReactElement, {
             // @ts-ignore
             loading: loading,

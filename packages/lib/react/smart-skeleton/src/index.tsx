@@ -25,7 +25,7 @@ type SmartSkeletonProps = {
     | {
         [K in Events]?: boolean;
       };
-};
+} & React.HTMLProps<HTMLDivElement>;
 
 let styleCache = new WeakMap<HTMLElement, React.CSSProperties>();
 
@@ -96,6 +96,7 @@ export function SmartSkeleton({
   block = false,
   debug,
   maxDepth = MAX_DEPTH,
+  ...rest
 }: SmartSkeletonProps) {
   const contentRef = useRef<HTMLDivElement>(null);
   useEasterEgg(contentRef.current);
@@ -164,7 +165,7 @@ export function SmartSkeleton({
 
   if (keepMountOnLoading || typeof modeRef.current === "object") {
     return (
-      <div style={{ position: "relative" }}>
+      <div style={{ position: "relative" }} {...rest}>
         <div ref={contentRef}>{children}</div>
         {loading && skeletons && (
           <div
@@ -186,7 +187,7 @@ export function SmartSkeleton({
 
   if (modeRef.current === "performance") {
     return (
-      <div ref={contentRef} style={{ position: "relative" }}>
+      <div ref={contentRef} style={{ position: "relative" }} {...rest}>
         {loading && skeletons ? skeletons : children}
       </div>
     );

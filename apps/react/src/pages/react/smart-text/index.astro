@@ -1,0 +1,168 @@
+---
+import { SmartText } from "@ela-labs/smart-text-react";
+import Layout from "@/layouts/layout.astro";
+import {
+  Table,
+  TableBody,
+  TableCaption,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
+import { InstallInstructions } from "@/components/install-instructions";
+import { Hero } from "@/components/hero";
+import { Tabs } from "@/components/tabs";
+import { Badge } from "@/components/ui/badge";
+
+const api = [
+  {
+    prop: "maxLines",
+    type: "number",
+    default: "3",
+    description:
+      "The maximum number of lines to display before truncating the text.",
+  },
+  {
+    prop: "expandable",
+    type: "boolean",
+    default: "true",
+    description:
+      "If true, the text will be expandable and a 'Read more' button will be shown.",
+  },
+  {
+    prop: "expandablePlacement",
+    type: "string",
+    default: "outside-bottom",
+    description:
+      "The placement of the expandable button. It can be 'outside-top', 'outside-bottom'",
+  },
+  {
+    prop: "readMoreLabel",
+    type: "string",
+    default: "More",
+    description:
+      "The label for the 'Read more' button. This is the text that will be displayed when the text is truncated.",
+  },
+  {
+    prop: "readLessLabel",
+    type: "string",
+    default: "Less",
+    description:
+      "The label for the 'Read less' button. This is the text that will be displayed when the text is expanded.",
+  },
+  {
+    prop: "expandableButton",
+    type: "React.ReactNode | ((props: {  expanded: boolean; setExpanded: (expanded: boolean) => void; hasOverflow: boolean;  }) => React.ReactNode)",
+    default: "button",
+    description:
+      "A custom button to trigger the expansion of the text. It can be a React node or a function that returns a React node. The function receives an object with the following properties: expanded (boolean), setExpanded (function), hasOverflow (boolean).",
+  },
+  {
+    prop: "expandableClassName",
+    type: "string",
+    default: "_",
+    description:
+      "The class name to apply to the expandable button. This can be used to style the button.",
+  },
+];
+---
+
+<Layout>
+  <Hero
+    version="1.0.0"
+    title="Smart Text"
+    infos={[
+      "SmartText is a text component with automatic line truncation, ideal for interfaces that disable space saving. It allows the user to view only a portion of the text with the option to expand it to see the full content, making the experience more fluid and responsive.",
+      "This component is used to display only a portion of the text when it is too large, and then a button like 'Read more' appears to expand it and 'Read less' to collapse it. It is useful in lists, cards or anywhere we want to avoid taking up too much space right away.",
+      "Shows a snippet of the content and allows you to expand to read the whole thing when the text is too long.",
+      "It is particularly useful for displaying content that may be too long to fit within a single screen or that may require scrolling.",
+    ]}
+    ]
+  />
+  <InstallInstructions componentName="smart-text-react" client:load />
+  <div class="mt-8">
+    <h3 class="text-xl font-bold mb-4">Examples: Basic usage</h3>
+    <div class="grid grid-cols-1 md:grid-cols-1 gap-12 rounded overflow-hidden">
+      <div>
+        <p class="mb-4 text-muted-foreground">
+          This is a simple example of the SmartText component. It will truncate
+          the text after 2 lines and show a "Read more" button to expand it.
+        </p>
+        <Tabs
+          showActions="devices"
+          client:load
+          childrenCode={`<SmartText maxLines={2} expandable client:load>
+          This text is too long to fit in the container, so it will be truncated. The user can click on the "Read more" button to expand and see the full content. This is useful for displaying long text in a compact way, allowing users to choose whether they want to read the entire content or not.
+      </SmartText>`}
+        >
+          <SmartText
+            maxLines={2}
+            expandable
+            expandableClassName="text-blue-500 underline cursor-pointer underline-offset-4"
+            client:load
+          >
+            {
+              `This text is too long to fit in the container, so it will be truncated. The user can click on the "Read more" button to expand and see the full content. This is useful for displaying long text in a compact way, allowing users to choose whether they want to read the entire content or not.`
+            }
+          </SmartText>
+        </Tabs>
+      </div>
+      <div>
+        <p class="mb-4 text-muted-foreground">
+          This is a simple example of the SmartText component. It will truncate
+          the text after 1 line and show a "Read more" button to expand it.
+        </p>
+        <Tabs
+          showActions="devices"
+          client:load
+          childrenCode={`<SmartText maxLines={2} expandable client:load>
+          This text is too long to fit in the container, so it will be truncated. The user can click on the "Read more" button to expand and see the full content. This is useful for displaying long text in a compact way, allowing users to choose whether they want to read the entire content or not.
+      </SmartText>`}
+        >
+          <SmartText
+            maxLines={1}
+            expandable
+            client:load
+            expandableClassName="text-blue-500 underline cursor-pointer underline-offset-4"
+          >
+            {
+              `This text is too long to fit in the container, so it will be truncated. The user can click on the "Read more" button to expand and see the full content. This is useful for displaying long text in a compact way, allowing users to choose whether they want to read the entire content or not.`
+            }
+          </SmartText>
+        </Tabs>
+      </div>
+    </div>
+    <Table className="mt-12">
+      <TableCaption>A list of your components.</TableCaption>
+      <TableHeader>
+        <TableRow>
+          <TableHead>Prop</TableHead>
+          <TableHead>Type</TableHead>
+          <TableHead>Default</TableHead>
+          <TableHead>Description</TableHead>
+        </TableRow>
+      </TableHeader>
+      <TableBody>
+        {
+          api?.map((a, i) => (
+            <TableRow key={i}>
+              <TableCell>
+                <Badge variant="secondary">{a.prop}</Badge>
+              </TableCell>
+              <TableCell>
+                <Badge variant="secondary">{a.type}</Badge>
+              </TableCell>
+              <TableCell>
+                <Badge variant="secondary">{a.default}</Badge>
+              </TableCell>
+              <TableCell className="text-left min-w-lg max-w-lg whitespace-normal">
+                {a.description}
+              </TableCell>
+            </TableRow>
+          ))
+        }
+      </TableBody>
+    </Table>
+  </div>
+</Layout>

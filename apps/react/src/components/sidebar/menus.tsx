@@ -41,6 +41,10 @@ const data: SidebarMenuItemType[] = [
             title: "Smart Skeleton",
             url: "/react/smart-skeleton",
           },
+          {
+            title: "Smart Text",
+            url: "/react/smart-text",
+          },
         ],
       },
     ],
