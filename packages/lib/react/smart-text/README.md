@@ -28,23 +28,35 @@ This is just the beginning. More components are coming soon!
 
 ## 💡 Components
 
-### 🦴 `SmartSkeleton`
+### 🥡 `SmartText`
 
-The `SmartSkeleton` is a smart skeleton loading component that adapts to the real DOM structure and styles.
+The `SmartText` is a smart text component that adapts to the real DOM structure and content overflow.
 
 It’s designed to balance **performance**, **reusability**, and **compatibility**, using:
 
-- `getComputedStyle` for style extraction
-- `getBoundingClientRect` for size measurement
-- A style cache (via `WeakMap`) for performance
-- Dynamic event listeners (`resize`, `scroll`, `mutation`) when in `responsive` mode
-- Simple shimmer via `skeleton-shimmer` class
+- It’s designed to balance performance, reusability, and compatibility, using:
+
+- `ResizeObserver` for detecting content size changes
+
+- `scrollHeight` vs clientHeight to detect overflow
+
+- `Efficient` line clamping with -webkit-line-clamp
+
+- `Expandable` behavior via expandable, readMoreLabel, and readLessLabel props
+
+- `Conditional` rendering of the expand/collapse button
+
+- `Customizable` button placement (outside-top, outside-bottom)
+
+- Full control with custom expandableButton (supports render prop pattern)
+
+- Clean and customizable with className and childrenClassName props
 
 ---
 
 ## 📚 Documentation
 
-📘 Check out the full docs at: [https://ela-labs-react.vercel.app](https://ela-labs-react.vercel.app)
+📘 Check out the full docs at: [https://ela-labs-react.vercel.app/react/smart-text](https://ela-labs-react.vercel.app/react/smart-text)
 
 ---
 
@@ -54,14 +66,14 @@ Each component in the ELA LABS collection is published independently, allowing y
 
 To install a specific component, refer to its individual installation guide in the documentation.
 
-📘 Full docs available at: [https://ela-labs-react.vercel.app](https://ela-labs-react.vercel.app)
+📘 Full docs available at: [https://ela-labs-react.vercel.app/react/smart-text](https://ela-labs-react.vercel.app/react/smart-text)
 
-For example, to install **SmartSkeleton**:
+For example, to install **SmartText**:
 
 ```bash
-pnpm install @ela-labs/smart-skeleton
+pnpm install @ela-labs/smart-text
 
-npm install @ela-labs/smart-skeleton
+npm install @ela-labs/smart-text
 # or
-yarn add @ela-labs/smart-skeleton
+yarn add @ela-labs/smart-text
 ```
