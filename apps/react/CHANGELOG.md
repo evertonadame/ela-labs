@@ -1,5 +1,15 @@
 # @ela-labs/smart-skeleton-react-example
 
+## 0.1.1
+
+### Patch Changes
+
+- 7e74d55: patch
+- Updated dependencies [7e74d55]
+  - @ela-labs/core@0.3.1
+  - @ela-labs/smart-skeleton-react@0.3.1
+  - @ela-labs/smart-text-react@0.1.1
+
 ## 0.1.0
 
 ### Minor Changes
