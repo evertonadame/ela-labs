@@ -1,6 +1,6 @@
 {
   "name": "@ela-labs/smart-text-react",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "A React smart text component for UI",
   "scripts": {
     "dev": "tsup --watch",

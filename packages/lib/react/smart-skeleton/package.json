@@ -1,6 +1,6 @@
 {
   "name": "@ela-labs/smart-skeleton-react",
-  "version": "0.2.7",
+  "version": "0.3.0",
   "description": "A React smart skeleton component for loading UI states.",
   "scripts": {
     "dev": "tsup --watch",
