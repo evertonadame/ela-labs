@@ -1,5 +1,11 @@
 # @ela-labs/eslint-config
 
+## 0.1.0
+
+### Minor Changes
+
+- 95e3e11: patch
+
 ## 0.0.6
 
 ### Patch Changes

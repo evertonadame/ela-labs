@@ -1,5 +1,11 @@
 # @ela-labs/core
 
+## 0.3.0
+
+### Minor Changes
+
+- 95e3e11: patch
+
 ## 0.2.6
 
 ### Patch Changes
