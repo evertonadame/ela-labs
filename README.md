@@ -42,6 +42,32 @@ It’s designed to balance **performance**, **reusability**, and **compatibility
 
 ---
 
+### 🥡 `SmartText`
+
+The `SmartText` is a smart text component that adapts to the real DOM structure and content overflow.
+
+It’s designed to balance **performance**, **reusability**, and **compatibility**, using:
+
+- It’s designed to balance performance, reusability, and compatibility, using:
+
+- `ResizeObserver` for detecting content size changes
+
+- `scrollHeight` vs clientHeight to detect overflow
+
+- `Efficient` line clamping with -webkit-line-clamp
+
+- `Expandable` behavior via expandable, readMoreLabel, and readLessLabel props
+
+- `Conditional` rendering of the expand/collapse button
+
+- `Customizable` button placement (outside-top, outside-bottom)
+
+- Full control with custom expandableButton (supports render prop pattern)
+
+- Clean and customizable with className and childrenClassName props
+
+---
+
 ## 📚 Documentation
 
 📘 Check out the full docs at: [https://ela-labs-react.vercel.app](https://ela-labs-react.vercel.app)
