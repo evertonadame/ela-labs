@@ -32,7 +32,7 @@ const api = [
   },
   {
     prop: "expandablePlacement",
-    type: "string",
+    type: "outside-bottom | outside-top",
     default: "outside-bottom",
     description:
       "The placement of the expandable button. It can be 'outside-top', 'outside-bottom'",
@@ -116,7 +116,7 @@ const api = [
         <Tabs
           showActions="devices"
           client:load
-          childrenCode={`<SmartText maxLines={2} expandable client:load>
+          childrenCode={`<SmartText maxLines={1} expandable client:load>
           This text is too long to fit in the container, so it will be truncated. The user can click on the "Read more" button to expand and see the full content. This is useful for displaying long text in a compact way, allowing users to choose whether they want to read the entire content or not.
       </SmartText>`}
         >
@@ -134,7 +134,7 @@ const api = [
       </div>
     </div>
     <Table className="mt-12">
-      <TableCaption>A list of your components.</TableCaption>
+      <TableCaption>Component API</TableCaption>
       <TableHeader>
         <TableRow>
           <TableHead>Prop</TableHead>
