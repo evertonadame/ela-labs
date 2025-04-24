@@ -1,5 +1,6 @@
 ---
 import Sidebar from "@/components/sidebar";
+import Analytics from "@vercel/analytics/astro";
 import { composeBreadcrumbs } from "../utils/compose-breadcrumbs";
 import { composeTitle } from "../utils/compose-title";
 import "@ela-labs/smart-skeleton-react/index.css";
@@ -59,6 +60,7 @@ const serverPath = Astro.url.pathname;
     <title>{title}</title>
   </head>
   <body>
+    <Analytics />
     <Sidebar client:load breadcrumbs={breadcrumbs} serverPath={serverPath}>
       <div class="py-4 px-8">
         <slot />
