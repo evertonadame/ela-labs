@@ -1,5 +1,11 @@
 # @ela-labs/core
 
+## 0.4.0
+
+### Minor Changes
+
+- 7b8fd4f: fix some types
+
 ## 0.3.1
 
 ### Patch Changes
