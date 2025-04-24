@@ -27,10 +27,19 @@ type SmartSkeletonProps = {
       };
 } & React.HTMLProps<HTMLDivElement>;
 
+type SkipSmartSkeletonProps = {
+  children: React.ReactNode | HTMLElement;
+};
+
 let styleCache = new WeakMap<HTMLElement, React.CSSProperties>();
+const skipRegistry = new WeakSet<HTMLElement>();
 
 function clearStyleCache() {
   styleCache = new WeakMap();
+}
+
+function markSkipSkeleton(ref: HTMLElement | null) {
+  if (ref) skipRegistry.add(ref);
 }
 
 function cloneSkeletonChildren(
@@ -45,6 +54,12 @@ function cloneSkeletonChildren(
     .filter((child) => child instanceof HTMLElement)
     .map((child, i) => {
       const htmlChild = child as HTMLElement;
+
+      if (skipRegistry.has(htmlChild)) {
+        console.warn("SmartSkeleton: skipping element via ref", htmlChild);
+        return null;
+      }
+
       const styles = getComputedStyle(child);
       if (styles.display === "none") return null;
 
@@ -63,7 +78,7 @@ function cloneSkeletonChildren(
       }
 
       const nested = cloneSkeletonChildren(
-        child as HTMLElement,
+        htmlChild,
         block,
         depth + 1,
         maxDepth
@@ -86,6 +101,18 @@ function cloneSkeletonChildren(
     });
 
   return children;
+}
+
+export function SkipSmartSkeleton({ children }: SkipSmartSkeletonProps) {
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (ref.current) {
+      markSkipSkeleton(ref.current);
+    }
+  }, []);
+
+  return <div ref={ref}>{<>{children}</>}</div>;
 }
 
 export function SmartSkeleton({
@@ -193,3 +220,6 @@ export function SmartSkeleton({
     );
   }
 }
+
+SmartSkeleton.displayName = "SmartSkeleton";
+SkipSmartSkeleton.displayName = "SkipSmartSkeleton";

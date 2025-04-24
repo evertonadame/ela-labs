@@ -1,6 +1,6 @@
 ---
-import { Terminal } from "lucide-react"
-import Layout from '../../layouts/layout.astro';
+import { Terminal } from "lucide-react";
+import Layout from "../../layouts/layout.astro";
 import {
   Table,
   TableBody,
@@ -9,76 +9,99 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/components/ui/table"
-import {
-  Alert,
-  AlertDescription,
-  AlertTitle,
-} from "@/components/ui/alert"
-import { Badge } from "@/components/ui/badge"
-import { Button } from "@/components/ui/button"
+} from "@/components/ui/table";
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 
 const components = [
-    {
-        name: 'Smart Skeleton',
-        status: 'Stable',
-        version: '1.0.0',
-        url: '/react/smart-skeleton',
-    },
-]
-
+  {
+    name: "Smart Skeleton",
+    status: "Stable",
+    version: "1.0.0",
+    url: "/react/smart-skeleton",
+  },
+  {
+    name: "Smart Text",
+    status: "Stable",
+    version: "1.0.0",
+    url: "/react/smart-text",
+  },
+];
 ---
 
 <Layout>
-    <div>
-        <h2 class="text-2xl font-bold mb-4">
-            React components
-        </h2>
-        <p class="mb-4 text-muted-foreground">
-            This collection of React components was developed with a single goal in mind: to enhance the end-user experience.
-            From the first cartridge to the final interaction, every detail was designed to be smooth, clear, and efficient. We prioritized performance, avoiding layout jumps (CLS), providing visual feedback with smart placeholders, and maintaining an accessible and modern framework for web projects.
-            All of this in a simple, modular, and scale-ready package.
-        </p>
-        <p class="mb-4 text-muted-foreground">
-            See below for the list of components we support in React. We are working on adding more components, so if you want to help us, please open an issue or a pull request on our GitHub repository.
-        </p>
-        <Alert>
-            <Terminal className="h-4 w-4" />
-            <AlertTitle>
-                Hey there! To install the components in your React project notice that we are using the new React 16 features, so you need to install React 16 or higher.
-            </AlertTitle>
-            <AlertDescription>
-                Each published as an independent package on npm, allowing you to import only what you need for your project.
-            </AlertDescription>
-          </Alert>
-    </div>
-    <Table className='w-full mt-4'>
-        <TableCaption>A list of your components.</TableCaption>
-        <TableHeader>
+  <div>
+    <h2 class="text-2xl font-bold mb-4">React components</h2>
+    <p class="mb-4 text-muted-foreground">
+      This collection of React components was developed with a single goal in
+      mind: to enhance the end-user experience. From the first cartridge to the
+      final interaction, every detail was designed to be smooth, clear, and
+      efficient. We prioritized performance, avoiding layout jumps (CLS),
+      providing visual feedback with smart placeholders, and maintaining an
+      accessible and modern framework for web projects. All of this in a simple,
+      modular, and scale-ready package.
+    </p>
+    <p class="mb-4 text-muted-foreground">
+      See below for the list of components we support in React. We are working
+      on adding more components, so if you want to help us, please open an issue
+      or a pull request on our GitHub repository.
+    </p>
+    <Alert>
+      <Terminal className="h-4 w-4" />
+      <AlertTitle>
+        Hey there! To install the components in your React project notice that
+        we are using the new React 16 features, so you need to install React 16
+        or higher.
+      </AlertTitle>
+      <AlertDescription>
+        Each published as an independent package on npm, allowing you to import
+        only what you need for your project.
+      </AlertDescription>
+    </Alert>
+  </div>
+  <Table className="w-full mt-4">
+    <TableCaption>A list of your components.</TableCaption>
+    <TableHeader>
+      <TableRow>
+        <TableHead className="w-[300px]">Name</TableHead>
+        <TableHead>Status</TableHead>
+        <TableHead>Version</TableHead>
+        <TableHead className="text-right">More</TableHead>
+      </TableRow>
+    </TableHeader>
+    <TableBody>
+      {
+        components?.map((c, i) => (
           <TableRow>
-            <TableHead className="w-[300px]">Name</TableHead>
-            <TableHead>Status</TableHead>
-            <TableHead>Version</TableHead>
-            <TableHead className="text-right">More</TableHead>
+            <TableCell>{c.name}</TableCell>
+            <TableCell>
+              <Badge
+                variant={
+                  c.status === "Stable"
+                    ? "default"
+                    : c.status === "Beta"
+                      ? "secondary"
+                      : "destructive"
+                }
+              >
+                {c.status}
+              </Badge>
+            </TableCell>
+            <TableCell>{c.version}</TableCell>
+            <TableCell className="text-right">
+              <Button asChild variant="link">
+                <a
+                  href={c.url}
+                  class="text-primary underline underline-offset-2"
+                >
+                  View
+                </a>
+              </Button>
+            </TableCell>
           </TableRow>
-        </TableHeader>
-        <TableBody>
-            {components?.map((c, i) => (
-                 <TableRow>
-                    <TableCell>{c.name}</TableCell>
-                    <TableCell>
-                        <Badge variant={c.status === 'Stable' ? 'default' : c.status === 'Beta' ? 'secondary' : 'destructive'}>
-                            {c.status}
-                        </Badge>
-                    </TableCell>
-                    <TableCell>{c.version}</TableCell>
-                    <TableCell className="text-right">
-                        <Button asChild variant="link" >
-                            <a href={c.url} class="text-primary underline underline-offset-2">View</a>
-                        </Button>
-                    </TableCell>
-                </TableRow>
-            ))}
-        </TableBody>
-      </Table>
+        ))
+      }
+    </TableBody>
+  </Table>
 </Layout>
