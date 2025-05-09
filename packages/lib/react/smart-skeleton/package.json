@@ -33,6 +33,9 @@
     "@types/node": "^22.14.0",
     "@types/react": "^18.0.0",
     "typescript": "^5.3.3",
+    "child_process": "^1.0.2",
+    "eslint": "^9.24.0",
+    "tsup": "^8.4.0",
     "@ela-labs/eslint-config": "workspace:*",
     "@ela-labs/typescript-config": "workspace:*"
   },
@@ -40,9 +43,6 @@
     "access": "public"
   },
   "dependencies": {
-    "@ela-labs/core": "workspace:*",
-    "child_process": "^1.0.2",
-    "eslint": "^9.24.0",
-    "tsup": "^8.4.0"
+    "@ela-labs/core": "workspace:*"
   }
 }

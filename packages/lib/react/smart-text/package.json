@@ -32,15 +32,15 @@
     "@types/react": "^18.0.0",
     "typescript": "^5.3.3",
     "@ela-labs/eslint-config": "workspace:*",
+    "child_process": "^1.0.2",
+    "eslint": "^9.24.0",
+    "tsup": "^8.4.0",
     "@ela-labs/typescript-config": "workspace:*"
   },
   "publishConfig": {
     "access": "public"
   },
   "dependencies": {
-    "@ela-labs/core": "workspace:*",
-    "child_process": "^1.0.2",
-    "eslint": "^9.24.0",
-    "tsup": "^8.4.0"
+    "@ela-labs/core": "workspace:*"
   }
 }
