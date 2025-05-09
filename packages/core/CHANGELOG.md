@@ -1,5 +1,11 @@
 # @ela-labs/core
 
+## 0.4.1
+
+### Patch Changes
+
+- c17318b: correct pj
+
 ## 0.4.0
 
 ### Minor Changes
