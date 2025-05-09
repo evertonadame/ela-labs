@@ -191,18 +191,9 @@ importers:
       '@ela-labs/core':
         specifier: workspace:*
         version: link:../../../core
-      child_process:
-        specifier: ^1.0.2
-        version: 1.0.2
-      eslint:
-        specifier: ^9.24.0
-        version: 9.24.0(jiti@2.4.2)
       react:
         specifier: '>=18.0.0'
         version: 19.1.0
-      tsup:
-        specifier: ^8.4.0
-        version: 8.4.0(jiti@2.4.2)(postcss@8.5.3)(typescript@5.8.2)
     devDependencies:
       '@ela-labs/eslint-config':
         specifier: workspace:*
@@ -216,6 +207,15 @@ importers:
       '@types/react':
         specifier: ^18.0.0
         version: 18.3.20
+      child_process:
+        specifier: ^1.0.2
+        version: 1.0.2
+      eslint:
+        specifier: ^9.24.0
+        version: 9.24.0(jiti@2.4.2)
+      tsup:
+        specifier: ^8.4.0
+        version: 8.4.0(jiti@2.4.2)(postcss@8.5.3)(typescript@5.8.2)
       typescript:
         specifier: ^5.3.3
         version: 5.8.2
@@ -225,18 +225,9 @@ importers:
       '@ela-labs/core':
         specifier: workspace:*
         version: link:../../../core
-      child_process:
-        specifier: ^1.0.2
-        version: 1.0.2
-      eslint:
-        specifier: ^9.24.0
-        version: 9.24.0(jiti@2.4.2)
       react:
         specifier: '>=18.0.0'
         version: 19.1.0
-      tsup:
-        specifier: ^8.4.0
-        version: 8.4.0(jiti@2.4.2)(postcss@8.5.3)(typescript@5.8.2)
     devDependencies:
       '@ela-labs/eslint-config':
         specifier: workspace:*
@@ -250,6 +241,15 @@ importers:
       '@types/react':
         specifier: ^18.0.0
         version: 18.3.20
+      child_process:
+        specifier: ^1.0.2
+        version: 1.0.2
+      eslint:
+        specifier: ^9.24.0
+        version: 9.24.0(jiti@2.4.2)
+      tsup:
+        specifier: ^8.4.0
+        version: 8.4.0(jiti@2.4.2)(postcss@8.5.3)(typescript@5.8.2)
       typescript:
         specifier: ^5.3.3
         version: 5.8.2
