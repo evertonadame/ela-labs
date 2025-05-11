@@ -1,5 +1,11 @@
 # @ela-labs/typescript-config
 
+## 0.1.2
+
+### Patch Changes
+
+- c17318b: correct pj
+
 ## 0.1.1
 
 ### Patch Changes
