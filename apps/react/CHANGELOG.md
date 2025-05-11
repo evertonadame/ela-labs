@@ -1,5 +1,15 @@
 # @ela-labs/smart-skeleton-react-example
 
+## 0.2.2
+
+### Patch Changes
+
+- 5e88810: pj
+- Updated dependencies [5e88810]
+  - @ela-labs/core@0.4.2
+  - @ela-labs/smart-skeleton-react@0.4.2
+  - @ela-labs/smart-text-react@0.1.4
+
 ## 0.2.1
 
 ### Patch Changes
